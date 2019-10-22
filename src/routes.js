@@ -20,10 +20,15 @@ const AuthMiddleawares = require('./app/middlewares/AuthMiddlewares')
   * Nossas rotas
   */
   
+  
+
+  
+  routes.post('/users',UserController.store) //Rota de Cadastro de Usuario
+  routes.post('/auth', AuthController.store)// rota de autenticação
+
   routes.use(AuthMiddleawares)
-  routes.get('/users', UserController.index)
-  routes.post('/users',UserController.store)
-  routes.post('/auth', AuthController.store)
+
+  routes.get('/users', UserController.index)// rota de retorno de usuario
 
   //rotas pra cadastro de novos usuarios
 

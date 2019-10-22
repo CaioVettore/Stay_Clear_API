@@ -5,8 +5,8 @@ class UserController {
     async index(req, res) {
         const users = await User.findAll({
             where: {
-                email: {
-                    [Op.ne]: 'caiozinhogameplay@gmail.com'
+                id: {
+                    [Op.ne]: req.userId
                 }
             }
         })
