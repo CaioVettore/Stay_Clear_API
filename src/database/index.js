@@ -4,7 +4,7 @@ const databaseConfig = require('../config/database')
 
 //models
 const User = require('../app/models/User')
-const Categories = require('../app/models/category')
+const Friend = require('../app/models/Friend')
 
 //Carregar nossos models
 class Database {
@@ -17,8 +17,7 @@ class Database {
         this.connections = new Sequelize(databaseConfig)
 
         User.init(this.connections)
-        Categories.init(this.connections)
-
+        Friend.init(this.connections)
 
     }
 }

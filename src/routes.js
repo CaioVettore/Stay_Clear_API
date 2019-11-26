@@ -4,7 +4,7 @@ const routes = express.Router()
 //Nossos controllers
 const UserController = require('./app/controllers/UserController')
 const AuthController = require('./app/controllers/AuthController')
-
+const FriendController = require('./app/controllers/FriendController')
 //nossos middlewares
 const AuthMiddleawares = require('./app/middlewares/AuthMiddlewares')
 
@@ -16,21 +16,24 @@ const AuthMiddleawares = require('./app/middlewares/AuthMiddlewares')
  * DELETE = Deletar algo 
  */
 
- /**
-  * Nossas rotas
-  */
-  
-  
+/**
+ * Nossas rotas
+ */
 
-  
-  routes.post('/users',UserController.store) //Rota de Cadastro de Usuario
-  routes.post('/auth', AuthController.store)// rota de autenticação
 
-  routes.use(AuthMiddleawares)
 
-  routes.get('/users', UserController.index)// rota de retorno de usuario
 
-  //rotas pra cadastro de novos usuarios
+routes.post('/users', UserController.store) //Rota de Cadastro de Usuario
+routes.post('/auth', AuthController.store)// rota de autenticação
+
+//Essas rotas abaixo precisam de autenticação
+routes.use(AuthMiddleawares)
+
+routes.get('/users', UserController.index)// rota de retorno de usuario
+routes.post('/friends', FriendController.store)//rota de add amigos
+routes.get('/friends', FriendController.index)
+
+//rotas pra cadastro de novos usuarios
 
 
 // routes.post('/users',async (req, res) => {
